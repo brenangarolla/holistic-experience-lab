@@ -1,5 +1,5 @@
 import { ArrowRight, Download } from "lucide-react";
-import portrait from "@/assets/portrait.jpg";
+import portrait from "@/assets/Bren.jpg";
 import heroVisual from "@/assets/hero-visual.jpg";
 import { useReveal } from "@/hooks/use-reveal";
 
@@ -10,15 +10,22 @@ export function Hero() {
       <div
         aria-hidden
         className="absolute -top-32 -left-40 w-[520px] h-[520px] rounded-full opacity-40 blur-3xl"
-        style={{ background: "radial-gradient(circle, oklch(0.5 0.054 200 / 0.35), transparent 70%)" }}
+        style={{
+          background: "radial-gradient(circle, oklch(0.5 0.054 200 / 0.35), transparent 70%)",
+        }}
       />
       <div
         aria-hidden
         className="absolute -bottom-40 -right-32 w-[480px] h-[480px] rounded-full opacity-30 blur-3xl"
-        style={{ background: "radial-gradient(circle, oklch(0.34 0.078 40 / 0.3), transparent 70%)" }}
+        style={{
+          background: "radial-gradient(circle, oklch(0.34 0.078 40 / 0.3), transparent 70%)",
+        }}
       />
 
-      <div ref={ref} className="reveal mx-auto max-w-6xl px-6 lg:px-10 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center relative">
+      <div
+        ref={ref}
+        className="reveal mx-auto max-w-6xl px-6 lg:px-10 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center relative"
+      >
         <div className="lg:col-span-7 order-2 lg:order-1">
           <p className="font-body text-sm uppercase tracking-[0.2em] text-secondary mb-6">
             UX / UI Designer
@@ -32,8 +39,8 @@ export function Hero() {
             Bridging systems & human experience.
           </p>
           <p className="mt-4 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
-            Designing digital experiences with an international mindset — where logistics
-            precision, customer empathy, and yoga&apos;s calm clarity meet.
+            Designing digital experiences with an international mindset — where logistics precision,
+            customer empathy, and yoga&apos;s calm clarity meet.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-3">
