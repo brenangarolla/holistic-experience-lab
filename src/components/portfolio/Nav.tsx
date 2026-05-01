@@ -44,7 +44,7 @@ export function Nav() {
             </a>
           ))}
           <a
-            href="/Brenda-Angarolla-Resume.pdf"
+            href="/BrendaAngarollaResume.pdf"
             download
             className="ml-2 inline-flex items-center gap-1.5 rounded-full border border-border px-3.5 py-1.5 text-sm text-foreground/80 hover:text-secondary hover:border-secondary/50 transition-colors"
           >
@@ -76,7 +76,7 @@ export function Nav() {
               </a>
             ))}
             <a
-              href="/Brenda-Angarolla-Resume.pdf"
+              href="/BrendaAngarollaResume.pdf"
               download
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm w-fit"

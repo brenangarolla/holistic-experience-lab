@@ -52,7 +52,7 @@ export function Hero() {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
-              href="/Brenda-Angarolla-Resume.pdf"
+              href="/BrendaAngarollaResume.pdf"
               download
               className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground/80 hover:text-secondary hover:border-secondary/60 transition-colors"
             >
