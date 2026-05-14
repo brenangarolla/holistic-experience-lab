@@ -11,6 +11,7 @@ import {
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import sercoMockup1 from "@/assets/work/serco-01.png";
 import sercoMockup2 from "@/assets/work/serco-02.png";
+import rebecaMockup1 from "@/assets/work/rebeca-01.png";
 
 type Project = {
   id: string;
@@ -65,6 +66,8 @@ const projects: Project[] = [
     tools: ["Figma", "Framer"],
     outcome:
       "Rebeca expanded its customer reach through a reliable, professional website.",
+    cover: rebecaMockup1,
+    mockups: [rebecaMockup1],
   },
   {
     id: "ecoshop",
