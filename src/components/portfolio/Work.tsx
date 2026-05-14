@@ -1,6 +1,16 @@
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import sercoMockup1 from "@/assets/work/serco-01.png";
+import sercoMockup2 from "@/assets/work/serco-02.png";
 
 type Project = {
   id: string;
@@ -10,6 +20,8 @@ type Project = {
   process: string[];
   tools: string[];
   outcome: string;
+  cover?: string;
+  mockups?: string[];
 };
 
 const projects: Project[] = [
@@ -25,6 +37,8 @@ const projects: Project[] = [
     tools: ["Figma", "Google Forms", "Trello"],
     outcome:
       "Developed scalable design systems and reusable components, ensuring consistency and efficient handoff to developers.",
+    cover: sercoMockup1,
+    mockups: [sercoMockup1, sercoMockup2],
   },
   {
     id: "my-solar-home",
