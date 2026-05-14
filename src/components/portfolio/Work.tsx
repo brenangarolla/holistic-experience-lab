@@ -96,8 +96,26 @@ function Card({
         isOpen
           ? "border-secondary/60 shadow-[0_30px_60px_-40px_rgba(44,102,110,0.45)]"
           : "border-border hover:border-secondary/40 hover:-translate-y-0.5"
-      }`}
+      } overflow-hidden`}
     >
+      {project.cover && (
+        <button
+          type="button"
+          onClick={onToggle}
+          aria-label={`Expand ${project.title} case study`}
+          className="block w-full overflow-hidden bg-muted"
+        >
+          <div className="relative aspect-[16/10] overflow-hidden">
+            <img
+              src={project.cover}
+              alt={`${project.title} mockup`}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.03]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-secondary/15 via-transparent to-transparent" />
+          </div>
+        </button>
+      )}
       <button
         type="button"
         onClick={onToggle}
@@ -136,6 +154,55 @@ function Card({
       >
         <div className="overflow-hidden">
           <div className="px-7 lg:px-8 pb-8 pt-1 space-y-5 border-t border-border/60">
+            {project.mockups && project.mockups.length > 0 && (
+              <div>
+                <p className="font-heading text-sm text-primary mb-3">Mockups</p>
+                <Carousel
+                  opts={{ align: "start", loop: project.mockups.length > 1 }}
+                  className="w-full"
+                >
+                  <CarouselContent className="-ml-3">
+                    {project.mockups.map((src, i) => (
+                      <CarouselItem
+                        key={i}
+                        className="pl-3 basis-4/5 sm:basis-3/5 lg:basis-1/2"
+                      >
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <button
+                              type="button"
+                              className="group/img block w-full overflow-hidden rounded-2xl bg-muted shadow-[0_20px_40px_-30px_rgba(7,57,60,0.4)] focus:outline-none focus:ring-2 focus:ring-secondary/60"
+                            >
+                              <div className="relative aspect-[4/5] overflow-hidden">
+                                <img
+                                  src={src}
+                                  alt={`${project.title} mockup ${i + 1}`}
+                                  loading="lazy"
+                                  className="absolute inset-0 h-full w-full object-contain transition-transform duration-500 ease-out motion-safe:group-hover/img:scale-[1.02]"
+                                />
+                              </div>
+                            </button>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-5xl bg-background p-2 sm:p-4">
+                            <img
+                              src={src}
+                              alt={`${project.title} mockup ${i + 1} enlarged`}
+                              className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
+                            />
+                          </DialogContent>
+                        </Dialog>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  {project.mockups.length > 1 && (
+                    <>
+                      <CarouselPrevious className="hidden sm:flex -left-3 bg-background border-secondary/40 text-secondary hover:bg-secondary hover:text-secondary-foreground" />
+                      <CarouselNext className="hidden sm:flex -right-3 bg-background border-secondary/40 text-secondary hover:bg-secondary hover:text-secondary-foreground" />
+                    </>
+                  )}
+                </Carousel>
+              </div>
+            )}
             <div>
               <p className="font-heading text-sm text-primary mb-2">Process</p>
               <ul className="space-y-2 text-sm lg:text-base text-foreground/85 leading-relaxed">
