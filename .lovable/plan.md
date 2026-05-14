@@ -1,96 +1,47 @@
-# Brenda Angarolla — Portfolio Site
+## Goal
 
-A calm, editorial single-page portfolio that balances structured (logistics/tech) and fluid (wellness) energy. Minimalist, warm, and clearly designed with care.
+Let each case study show a **cover mockup** when collapsed and a **horizontal carousel of mockups** inside the expanded panel.
 
-## Design System
+## Asset workflow
 
-**Palette** (calm, grounded, wellness-tech)
+1. Upload your mockups in chat, grouped by project (Serco, My Solar Home, Rebeca, EcoShop). PNG or JPG, ideally landscape (~1600×1000) or device-framed.
+2. Name them clearly (e.g. `serco-cover.jpg`, `serco-01.jpg`, `serco-02.jpg`).
+3. I'll save them to `src/assets/work/` and import them per project.
 
-- Primary `#4E2511` (deep warm brown — headlines, accents)
-- Secondary `#2C666E` (muted teal — links, highlights)
-- Accent `#07393C` (deep teal — buttons, hover states)
-- Background `#F0EDEE` (warm off-white)
-- Text `#2A2A2A` (soft dark gray, never pure black)
+If a project has no mockup yet, its card stays text-only — no broken placeholders.
 
-**Typography**
+## Design changes to `Work.tsx`
 
-- Headings: MuseoModerno (Google Fonts) — large, confident, editorial
-- Body: Open Sans — comfortable line-height, generous letter spacing
+**Collapsed card**
+- Add a 16:10 cover image at the top of the card with rounded top corners.
+- Subtle zoom-on-hover (`scale-[1.02]`, 500ms ease) and a soft overlay tint in the secondary color for the "wellness-tech" feel.
+- Text block (role, title, context) sits below the image; expand button stays top-right.
 
-**Motion**
+**Expanded panel**
+- New "Mockups" section above Process.
+- Horizontal carousel using the existing `src/components/ui/carousel.tsx` (Embla):
+  - Each slide ~80% width on mobile, ~60% on desktop, so the next image peeks in.
+  - Rounded corners, soft shadow, `aspect-[16/10]`.
+  - Prev/Next arrows styled with the accent color; arrows hidden on touch (swipe only).
+  - Click a slide to open a lightweight lightbox (Dialog) showing the full image.
 
-- Fade-in + slide-up on section enter (Intersection Observer, ~400ms ease-out, staggered)
-- Soft hover: subtle scale (1.02), color/opacity shifts ~200ms
-- Smooth scroll between sections via anchor IDs
-- All animations respect `prefers-reduced-motion`
+**Data model**
+Extend `Project` with:
+```ts
+cover?: string;       // imported image
+mockups?: string[];   // imported images for the carousel
+```
+Cover and gallery render only when present.
 
-## Page Structure (single page, anchor sections)
+## Animation & polish
+- Reuse `useReveal` so cover images fade/slide in on scroll.
+- Keep transitions calm (300–500ms, ease-out) — no bouncy motion.
+- Respect `prefers-reduced-motion` by disabling the hover zoom.
 
-Top sticky nav (translucent, blurs on scroll) with buttons:
-**About · Work · Skills · Experience · Contact** + a small "Resume" download button.
+## Files touched
+- `src/components/portfolio/Work.tsx` — cover, carousel, lightbox, updated data shape.
+- `src/assets/work/` — new folder for uploaded images (created when you send them).
+- `src/styles.css` — only if a new utility is needed (likely not).
 
-### 1. Hero (`#home`)
-
-- Two-column on desktop, stacked on mobile
-- Left: name "Brenda Angarolla" (large MuseoModerno), title "UX/UI Designer — Bridging Systems & Human Experience", tagline "Designing digital experiences with an international mindset", primary CTA "View My Work" (scrolls to `#work`), secondary "Download Resume"
-- Right: minimal portrait in a soft rounded shape with a subtle teal/brown gradient halo behind it (placeholder image — easy to replace)
-
-### 2. About (`#about`)
-
-- Two-column editorial layout: short heading on the left ("About"), narrative paragraph on the right (the full text provided)
-- Three small "pillar" chips below: _Systems thinking · User empathy · Calm clarity_ — visually tying logistics, customer service, and yoga
-
-### 3. Featured Work (`#work`)
-
-- Section intro line + grid of 4 case study cards (2 cols desktop, 1 col mobile)
-- Each card shows: project title, one-line context, role tag, "Read more" affordance
-- **Expandable behavior**: clicking a card smoothly expands it in place (height animation) to reveal Process highlights, Tools (as tags), and Outcome. Click again to collapse. Only one open at a time for focus. Keyboard accessible (Enter/Space, aria-expanded).
-- Projects: Serco, My Solar Home, Rebeca, EcoShop Website (all content from brief)
-- Subtle hover: border color shifts to secondary teal, slight lift
-
-### 4. Skills & Tools (`#skills`)
-
-- Four card columns: **UX**, **UI**, **Tools**, **Transferable Skills**
-- Items rendered as soft tag pills (background tint, no harsh borders)
-- Transferable skills get short context lines (e.g., "Systems thinking — from logistics")
-
-### 5. Experience (`#experience`)
-
-- Vertical timeline with a soft vertical line in secondary color
-- Three entries:
-  1. UX/UI Designer & Co-founder — Digital Products Agency (current)
-  2. Logistics & Customer Service — Dell Technologies (Remote) and Mediterranean Shipping Company (Buenos Aires)
-  3. Yoga Teacher — group classes, in person & online
-- Each: role, place, dates (placeholder if unspecified), 2–3 line narrative emphasizing the highlighted qualities
-
-### 6. Contact (`#contact`)
-
-- Centered, generous whitespace
-- Headline "Let's create something thoughtful together"
-- Message: "Feel free to contact me to bring your idea into life."
-- Email link (mailto), LinkedIn link (new tab)
-- Primary CTA "Let's Work Together" → mailto
-
-### Footer
-
-- Simple line: "© 2026 Brenda Angarolla · Designed with care" + social icons
-
-## Technical Details
-
-- Single route: `src/routes/index.tsx` rendering composed section components in `src/components/portfolio/` (Hero, About, Work, CaseStudyCard, Skills, Experience, Contact, Nav, Footer)
-- Tailwind tokens added to `src/styles.css` for the custom palette (oklch values), plus `font-heading` / `font-body` utilities; Google Fonts loaded via `<link>` in `__root.tsx` head
-- Scroll-into-view animations via a small `useInView` hook (Intersection Observer) toggling a class — no animation library needed
-- Smooth scroll handled by CSS `scroll-behavior: smooth` + `scroll-margin-top` on sections to clear the sticky nav
-- Mobile nav: hamburger → slide-down panel with the same anchor links
-- Resume PDF: a placeholder `BrendaAngarollaResume.pdf` placed in `public/` so the download button works immediately; user can swap the file later
-- Portrait: placeholder image in `public/` (easy to replace) — abstract gradient shape behind it doubles as decoration if no photo yet
-- Fully responsive, mobile-first; tested layout at 375 / 768 / 1280
-- Accessibility: semantic landmarks, focus rings in accent color, aria labels on nav and expandable cards, reduced-motion fallback
-
-## Out of Scope (for now)
-
-- Dark mode toggle
-- Dedicated case study routes
-- CMS / contact form backend (mailto only)
-
-Ready to build when you approve.
+## Next step
+Upload the mockups whenever you're ready and tell me which images belong to which project. I'll wire them in.
