@@ -12,6 +12,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import sercoMockup1 from "@/assets/work/serco-01.png";
 import sercoMockup2 from "@/assets/work/serco-02.png";
 import rebecaMockup1 from "@/assets/work/rebeca-01.png";
+import solarMockup1 from "@/assets/work/solar-01.png";
 
 type Project = {
   id: string;
@@ -54,6 +55,8 @@ const projects: Project[] = [
     tools: ["ChatGPT (specialized agent)", "Lovable", "Google Slides"],
     outcome:
       "Used AI prototyping tools to quickly validate UX thinking and bring the concept to life for early-stage testing.",
+    cover: solarMockup1,
+    mockups: [solarMockup1],
   },
   {
     id: "rebeca",
