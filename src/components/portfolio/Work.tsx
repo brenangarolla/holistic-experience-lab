@@ -13,6 +13,7 @@ import sercoMockup1 from "@/assets/work/serco-01.png";
 import sercoMockup2 from "@/assets/work/serco-02.png";
 import rebecaMockup1 from "@/assets/work/rebeca-01.png";
 import solarMockup1 from "@/assets/work/solar-01.png";
+import ecoshopMockup1 from "@/assets/work/ecoshop-01.png";
 
 type Project = {
   id: string;
@@ -84,6 +85,8 @@ const projects: Project[] = [
     tools: ["Figma"],
     outcome:
       "Streamlined the purchase process and reinforced ecological awareness through informative on-page messages.",
+    cover: ecoshopMockup1,
+    mockups: [ecoshopMockup1],
   },
 ];
 
