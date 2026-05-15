@@ -1,6 +1,5 @@
 import { ArrowRight, Download } from "lucide-react";
 import portrait from "@/assets/Bren.jpg";
-import heroVisual from "@/assets/hero-visual.jpg";
 import { useReveal } from "@/hooks/use-reveal";
 
 export function Hero() {
