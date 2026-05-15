@@ -10,14 +10,14 @@ export function Hero() {
         aria-hidden
         className="absolute -top-32 -left-40 w-[520px] h-[520px] rounded-full opacity-40 blur-3xl"
         style={{
-          background: "radial-gradient(circle, oklch(0.5 0.054 200 / 0.35), transparent 70%)",
+          background: "radial-gradient(circle, oklch(0.62 0.11 235 / 0.35), transparent 70%)",
         }}
       />
       <div
         aria-hidden
         className="absolute -bottom-40 -right-32 w-[480px] h-[480px] rounded-full opacity-30 blur-3xl"
         style={{
-          background: "radial-gradient(circle, oklch(0.34 0.078 40 / 0.3), transparent 70%)",
+          background: "radial-gradient(circle, oklch(0.58 0.07 135 / 0.3), transparent 70%)",
         }}
       />
 
@@ -32,7 +32,7 @@ export function Hero() {
               className="absolute -inset-4 rounded-full -z-10 opacity-70 blur-2xl"
               style={{
                 background:
-                  "radial-gradient(circle at 30% 30%, oklch(0.5 0.054 200 / 0.35), transparent 70%)",
+                  "radial-gradient(circle at 30% 30%, oklch(0.62 0.11 235 / 0.35), transparent 70%)",
               }}
             />
             <img
@@ -40,7 +40,7 @@ export function Hero() {
               alt="Portrait of Brenda Angarolla"
               width={896}
               height={1152}
-              className="relative w-full aspect-square object-cover object-top rounded-full ring-1 ring-border/60 shadow-[0_20px_50px_-25px_rgba(78,37,17,0.45)]"
+              className="relative w-full aspect-square object-cover object-top rounded-full ring-1 ring-border/60 shadow-[0_20px_50px_-25px_rgba(30,58,95,0.4)]"
             />
           </div>
         </div>
