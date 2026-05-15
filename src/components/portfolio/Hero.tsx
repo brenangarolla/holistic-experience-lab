@@ -40,7 +40,7 @@ export function Hero() {
               alt="Portrait of Brenda Angarolla"
               width={896}
               height={1152}
-              className="relative w-full aspect-square object-cover rounded-full ring-1 ring-border/60 shadow-[0_20px_50px_-25px_rgba(78,37,17,0.45)]"
+              className="relative w-full aspect-square object-cover object-top rounded-full ring-1 ring-border/60 shadow-[0_20px_50px_-25px_rgba(78,37,17,0.45)]"
             />
           </div>
         </div>
