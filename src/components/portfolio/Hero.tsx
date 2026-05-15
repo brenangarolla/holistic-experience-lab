@@ -1,6 +1,5 @@
 import { ArrowRight, Download } from "lucide-react";
 import portrait from "@/assets/Bren.jpg";
-import heroVisual from "@/assets/hero-visual.jpg";
 import { useReveal } from "@/hooks/use-reveal";
 
 export function Hero() {
@@ -24,9 +23,29 @@ export function Hero() {
 
       <div
         ref={ref}
-        className="reveal mx-auto max-w-6xl px-6 lg:px-10 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center relative"
+        className="reveal mx-auto max-w-6xl px-6 lg:px-10 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center relative"
       >
-        <div className="lg:col-span-7 order-2 lg:order-1">
+        <div className="lg:col-span-4 order-1 relative">
+          <div className="relative max-w-[280px] sm:max-w-[320px] lg:max-w-none">
+            <div
+              aria-hidden
+              className="absolute -inset-4 rounded-full -z-10 opacity-70 blur-2xl"
+              style={{
+                background:
+                  "radial-gradient(circle at 30% 30%, oklch(0.5 0.054 200 / 0.35), transparent 70%)",
+              }}
+            />
+            <img
+              src={portrait}
+              alt="Portrait of Brenda Angarolla"
+              width={896}
+              height={1152}
+              className="relative w-full aspect-square object-cover rounded-full ring-1 ring-border/60 shadow-[0_20px_50px_-25px_rgba(78,37,17,0.45)]"
+            />
+          </div>
+        </div>
+
+        <div className="lg:col-span-8 order-2">
           <p className="font-body text-sm uppercase tracking-[0.2em] text-secondary mb-6">
             UX / UI Designer
           </p>
@@ -59,34 +78,6 @@ export function Hero() {
               <Download className="h-4 w-4" />
               Download Resume
             </a>
-          </div>
-        </div>
-
-        <div className="lg:col-span-5 order-1 lg:order-2 relative">
-          <div className="relative max-w-sm mx-auto lg:max-w-none">
-            <div
-              aria-hidden
-              className="absolute -inset-6 rounded-[2.5rem] -z-10 opacity-80"
-              style={{
-                background:
-                  "linear-gradient(135deg, oklch(0.5 0.054 200 / 0.18), oklch(0.34 0.078 40 / 0.12))",
-              }}
-            />
-            <img
-              src={heroVisual}
-              alt=""
-              aria-hidden
-              className="absolute -top-6 -right-6 w-40 h-40 object-cover rounded-3xl opacity-70 mix-blend-multiply hidden sm:block"
-              width={896}
-              height={1152}
-            />
-            <img
-              src={portrait}
-              alt="Portrait of Brenda Angarolla"
-              width={896}
-              height={1152}
-              className="relative w-full aspect-[4/5] object-cover rounded-[2rem] shadow-[0_20px_60px_-30px_rgba(78,37,17,0.45)]"
-            />
           </div>
         </div>
       </div>
